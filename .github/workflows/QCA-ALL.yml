@@ -49,9 +49,9 @@ jobs:
       #默认WIFI名称
       WRT_SSID: OpenWrt
       #默认WIFI密码
-      WRT_WORD: password
+      WRT_WORD: 123456qwerty
       #默认地址
-      WRT_IP: 10.3.2.1
+      WRT_IP: 192.168.13.1
       #默认密码，仅作提示，修改无用
       WRT_PW: 无
       #源码链接
