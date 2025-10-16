@@ -6,8 +6,8 @@ rm -rf .vermagic
 mv $GITHUB_WORKSPACE/vm/vikingyfy-$IPQ_TARGET vermagic
 sed -i '130d' include/kernel-defaults.mk
 sed -i '130i\\tcp $(TOPDIR)/vermagic $(LINUX_DIR)/.vermagic' include/kernel-defaults.mk
-sed -i '29d' package/kernel/linux/Makefile
-sed -i '29i\  STAMP_BUILT:=$(STAMP_BUILT)_$(shell cat $(LINUX_DIR)/.vermagic)' package/kernel/linux/Makefile
+sed -i '30d' package/kernel/linux/Makefile
+sed -i '30i\  STAMP_BUILT:=$(STAMP_BUILT)_$(shell cat $(LINUX_DIR)/.vermagic)' package/kernel/linux/Makefile
 
 rm -rf feeds/packages/lang/golang
 git clone https://github.com/sbwml/packages_lang_golang -b 25.x feeds/packages/lang/golang
