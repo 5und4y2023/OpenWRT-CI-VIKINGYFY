@@ -11,6 +11,11 @@ on:
   #手动编译
   workflow_dispatch:
     inputs:
+      USB:
+        description: '添加USB驱动。'
+        default: 'true'
+        required: false
+        type: boolean
       PACKAGE:
         description: '手动调整插件包，多个请用\n符号隔开。'
         required: false
