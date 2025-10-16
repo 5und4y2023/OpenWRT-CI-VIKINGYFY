@@ -19,10 +19,11 @@ mv package/small-package/luci-app-adguardhome package/luci-app-adguardhome
 mv package/small-package/adguardhome feeds/packages/net/adguardhome
 mv package/small-package/luci-app-easymesh package/luci-app-easymesh
 mv package/small-package/luci-app-ikoolproxy package/luci-app-ikoolproxy
-mv package/small-package/wrtbwmon package/wrtbwmon
-mv package/small-package/luci-app-wrtbwmon package/luci-app-wrtbwmon
 mv package/small-package/lucky package/lucky
 mv package/small-package/luci-app-lucky package/luci-app-lucky
+mv package/small-package/luci-app-pushbot package/luci-app-pushbot
+mv package/small-package/wrtbwmon package/wrtbwmon
+mv package/small-package/luci-app-wrtbwmon package/luci-app-wrtbwmon
 rm -rf package/small-package
 
 if grep -q "openclash=y" "$GITHUB_WORKSPACE/$CONFIG_FILE"; then
