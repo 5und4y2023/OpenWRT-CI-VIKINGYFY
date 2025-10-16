@@ -1,4 +1,4 @@
-IPQ_TARGET: ipq60xx
+IPQ_TARGET=ipq60xx
 #mv $GITHUB_WORKSPACE/patch/998-ipq.sh package/base-files/files/etc/uci-defaults/998-ipq.sh
 mv $GITHUB_WORKSPACE/patch/998-$IPQ_TARGET.sh package/base-files/files/etc/uci-defaults/998-ipq.sh
 
