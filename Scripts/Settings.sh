@@ -5,13 +5,6 @@ mv $GITHUB_WORKSPACE/patch/998-ipq60xx.sh package/base-files/files/etc/uci-defau
 
 rm -rf feeds/packages/lang/golang
 git clone https://github.com/sbwml/packages_lang_golang -b 25.x feeds/packages/lang/golang
-rm -rf feeds/luci/applications/{luci-app-passwall,luci-app-openclash}
-rm -rf feeds/packages/net/{mosdns,v2ray-geodata}
-git clone --depth 1 https://github.com/vernesong/OpenClash.git package/OpenClash
-git clone --depth 1 https://github.com/nikkinikki-org/OpenWrt-nikki.git package/OpenWrt-nikki
-git clone --depth 1 https://github.com/xiaorouji/openwrt-passwall.git package/passwall
-git clone --depth 1 https://github.com/xiaorouji/openwrt-passwall2.git package/passwall2
-git clone https://github.com/sbwml/luci-app-mosdns -b v5 package/mosdns
 
 if grep -q "openclash=y" "$GITHUB_WORKSPACE/$CONFIG_FILE"; then
     git clone --depth 1 -b core https://github.com/vernesong/OpenClash.git  package/openclash-core
