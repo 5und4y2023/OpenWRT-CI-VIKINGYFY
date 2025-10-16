@@ -1,4 +1,24 @@
-#!/bin/bash
+
+#mv $GITHUB_WORKSPACE/patch/998-ipq.sh package/base-files/files/etc/uci-defaults/998-ipq.sh
+mv $GITHUB_WORKSPACE/patch/998-ipq60xx.sh package/base-files/files/etc/uci-defaults/998-ipq.sh
+#mv $GITHUB_WORKSPACE/patch/998-ipq807x.sh package/base-files/files/etc/uci-defaults/998-ipq.sh
+
+rm -rf feeds/packages/lang/golang
+git clone https://github.com/sbwml/packages_lang_golang -b 25.x feeds/packages/lang/golang
+rm -rf feeds/luci/applications/{luci-app-passwall,luci-app-openclash}
+rm -rf feeds/packages/net/{mosdns,v2ray-geodata}
+git clone --depth 1 https://github.com/vernesong/OpenClash.git package/OpenClash
+git clone --depth 1 https://github.com/nikkinikki-org/OpenWrt-nikki.git package/OpenWrt-nikki
+git clone --depth 1 https://github.com/xiaorouji/openwrt-passwall.git package/passwall
+git clone --depth 1 https://github.com/xiaorouji/openwrt-passwall2.git package/passwall2
+git clone https://github.com/sbwml/luci-app-mosdns -b v5 package/mosdns
+
+if grep -q "openclash=y" "$GITHUB_WORKSPACE/$CONFIG_FILE"; then
+    git clone --depth 1 -b core https://github.com/vernesong/OpenClash.git  package/openclash-core
+    tar -zxf package/openclash-core/master/meta/clash-linux-arm64.tar.gz -C package/base-files/files/etc/
+    mv package/base-files/files/etc/clash package/base-files/files/etc/my-clash
+    rm -rf package/openclash-core
+fi
 
 #修改默认主题
 #sed -i "s/luci-theme-bootstrap/luci-theme-$WRT_THEME/g" $(find ./feeds/luci/collections/ -type f -name "Makefile")
