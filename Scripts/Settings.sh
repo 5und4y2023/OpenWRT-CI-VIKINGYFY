@@ -1,9 +1,10 @@
-IPQ_TARGET=grep -o 'CONFIG_TARGET_qualcommax_[^=]*' .config | sed -n 's/CONFIG_TARGET_qualcommax_//p'
+#IPQ_TARGET=grep -o 'CONFIG_TARGET_qualcommax_[^=]*' .config | sed -n 's/CONFIG_TARGET_qualcommax_//p'
 #mv $GITHUB_WORKSPACE/patch/998-ipq.sh package/base-files/files/etc/uci-defaults/998-ipq.sh
-mv $GITHUB_WORKSPACE/patch/998-$IPQ_TARGET.sh package/base-files/files/etc/uci-defaults/998-ipq.sh
+#mv $GITHUB_WORKSPACE/patch/998-$IPQ_TARGET.sh package/base-files/files/etc/uci-defaults/998-ipq.sh
 
+mv $GITHUB_WORKSPACE/patch/998-ipq60xx.sh package/base-files/files/etc/uci-defaults/998-ipq.sh
 rm -rf .vermagic
-mv $GITHUB_WORKSPACE/vm/vikingyfy-$IPQ_TARGET vermagic
+mv $GITHUB_WORKSPACE/vm/vikingyfy-ipq60xx vermagic
 sed -i '130d' include/kernel-defaults.mk
 sed -i '130i\\tcp $(TOPDIR)/vermagic $(LINUX_DIR)/.vermagic' include/kernel-defaults.mk
 sed -i '30d' package/kernel/linux/Makefile
