@@ -69,3 +69,5 @@ jobs:
       WRT_PACKAGE: ${{inputs.PACKAGE}}
       #仅输出配置文件
       WRT_TEST: ${{inputs.TEST}}
+      #仅输出配置文件
+      WRT_USB: ${{inputs.USB}}
