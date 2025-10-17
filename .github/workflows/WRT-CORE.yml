@@ -166,12 +166,12 @@ jobs:
       - name: Custom Settings
         run: |
           cd ./wrt/
+          cat $GITHUB_WORKSPACE/Config/$WRT_CONFIG.txt $GITHUB_WORKSPACE/Config/GENERAL.txt >> .config
 
-          if env.WRT_USB = 'true'; then
-            cat $GITHUB_WORKSPACE/Config/$WRT_CONFIG.txt $GITHUB_WORKSPACE/Config/GENERAL-USB.txt >> .config
-          else
-            cat $GITHUB_WORKSPACE/Config/$WRT_CONFIG.txt $GITHUB_WORKSPACE/Config/GENERAL.txt >> .config
-            
+          if [ "$WRT_USB" = "true" ]; then
+            cat $GITHUB_WORKSPACE/Config/ADD-USB.txt >> .config            
+          fi
+          
           $GITHUB_WORKSPACE/Scripts/Settings.sh
 
           make defconfig -j$(nproc) && make clean -j$(nproc)
