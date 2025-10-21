@@ -16,13 +16,13 @@ on:
       WRT_SSID:
         required: true
         type: string
-      WRT_WORD:
+      WRT_WIFI_PW:
         required: true
         type: string
       WRT_IP:
         required: true
         type: string
-      WRT_PW:
+      WRT_LOGIN_PW:
         required: true
         type: string
       WRT_REPO:
@@ -50,9 +50,9 @@ env:
   WRT_THEME: ${{inputs.WRT_THEME}}
   WRT_NAME: ${{inputs.WRT_NAME}}
   WRT_SSID: ${{inputs.WRT_SSID}}
-  WRT_WORD: ${{inputs.WRT_WORD}}
+  WRT_WIFI_PW: ${{inputs.WRT_WIFI_PW}}
   WRT_IP: ${{inputs.WRT_IP}}
-  WRT_PW: ${{inputs.WRT_PW}}
+  WRT_LOGIN_PW: ${{inputs.WRT_LOGIN_PW}}
   WRT_REPO: ${{inputs.WRT_REPO}}
   WRT_BRANCH: ${{inputs.WRT_BRANCH}}
   WRT_SOURCE: ${{inputs.WRT_SOURCE}}
@@ -241,10 +241,10 @@ jobs:
             平台：${{env.WRT_TARGET}}
 
             登录地址：${{env.WRT_IP}}
-            登录密码：${{env.WRT_PW}}
+            登录密码：${{env.WRT_LOGIN_PW}}
 
             WIFI名称：${{env.WRT_SSID}}
-            WIFI密码：${{env.WRT_WORD}}
+            WIFI密码：${{env.WRT_WIFI_P}}
 
             内核版本：${{env.WRT_KVER}}
             插件列表：${{env.WRT_LIST}}
