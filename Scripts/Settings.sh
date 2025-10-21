@@ -1,31 +1,13 @@
-#IPQ_TARGET=grep -o 'CONFIG_TARGET_qualcommax_[^=]*' .config | sed -n 's/CONFIG_TARGET_qualcommax_//p'
+IPQ_TARGET=$(grep -o 'CONFIG_TARGET_qualcommax_[^=]*' .config | sed -n 's/CONFIG_TARGET_qualcommax_//p')
 #mv $GITHUB_WORKSPACE/patch/998-ipq.sh package/base-files/files/etc/uci-defaults/998-ipq.sh
-#mv $GITHUB_WORKSPACE/patch/998-$IPQ_TARGET.sh package/base-files/files/etc/uci-defaults/998-ipq.sh
+mv $GITHUB_WORKSPACE/patch/998-$IPQ_TARGET.sh package/base-files/files/etc/uci-defaults/998-ipq.sh
 
-mv $GITHUB_WORKSPACE/patch/998-ipq60xx.sh package/base-files/files/etc/uci-defaults/998-ipq.sh
 rm -rf .vermagic
-mv $GITHUB_WORKSPACE/vm/vikingyfy-ipq60xx vermagic
+mv $GITHUB_WORKSPACE/vm/vikingyfy-$IPQ_TARGET vermagic
 sed -i '130d' include/kernel-defaults.mk
 sed -i '130i\\tcp $(TOPDIR)/vermagic $(LINUX_DIR)/.vermagic' include/kernel-defaults.mk
 sed -i '30d' package/kernel/linux/Makefile
 sed -i '30i\  STAMP_BUILT:=$(STAMP_BUILT)_$(shell cat $(LINUX_DIR)/.vermagic)' package/kernel/linux/Makefile
-
-rm -rf feeds/packages/lang/golang
-git clone https://github.com/sbwml/packages_lang_golang -b 25.x feeds/packages/lang/golang
-
-rm -rf feeds/packages/net/{adguardhome,smartdns}
-rm -rf feeds/luci/applications/{luci-app-adguardhome,luci-app-smartdns}
-git clone --depth 1 https://github.com/kenzok8/small-package.git package/small-package
-mv package/small-package/luci-app-adguardhome package/luci-app-adguardhome
-mv package/small-package/adguardhome feeds/packages/net/adguardhome
-mv package/small-package/luci-app-easymesh package/luci-app-easymesh
-mv package/small-package/luci-app-ikoolproxy package/luci-app-ikoolproxy
-mv package/small-package/lucky package/lucky
-mv package/small-package/luci-app-lucky package/luci-app-lucky
-mv package/small-package/luci-app-pushbot package/luci-app-pushbot
-mv package/small-package/wrtbwmon package/wrtbwmon
-mv package/small-package/luci-app-wrtbwmon package/luci-app-wrtbwmon
-rm -rf package/small-package
 
 if grep -q "openclash=y" .config; then
     git clone --depth 1 -b core https://github.com/vernesong/OpenClash.git  package/openclash-core
