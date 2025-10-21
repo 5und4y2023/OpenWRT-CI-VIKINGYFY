@@ -152,6 +152,7 @@ jobs:
       - name: Update Feeds
         run: |
           cd ./wrt/
+          sed -i '1i src-git passwall_packages https://github.com/xiaorouji/openwrt-passwall-packages.git' feeds.conf.default
 
           ./scripts/feeds update -a
           ./scripts/feeds install -a
