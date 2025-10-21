@@ -8,15 +8,22 @@ on:
   #手动编译
   workflow_dispatch:
     inputs:
+      CONFIG:
+        type: choice
+        description: '选择要编译的.config平台'
+        required: true
+        options:
+          - IPQ60XX-WIFI-YES
+          - IPQ60XX-WIFI-NO
+          - IPQ807X-WIFI-YES
+          - IPQ807X-WIFI-NO
+        
       USB:
         description: '添加USB驱动。'
         default: 'true'
         required: false
         type: boolean
-      PACKAGE:
-        description: '手动调整插件包，多个请用\n符号隔开。'
-        required: false
-        type: string
+
       TEST:
         description: '仅输出配置文件，不编译固件。'
         default: 'false'
@@ -29,21 +36,13 @@ permissions: write-all
 #CI任务
 jobs:
   config:
-    name: ${{matrix.CONFIG}}
-    strategy:
-      fail-fast: false
-      #max-parallel: 3
-      matrix:
-        CONFIG: [IPQ60XX-WIFI-NO]
-        # CONFIG: [IPQ60XX-WIFI-YES, IPQ60XX-WIFI-NO, IPQ807X-WIFI-YES, IPQ807X-WIFI-NO]
-        SOURCE: [VIKINGYFY/immortalwrt]
-        BRANCH: [main]
-
+    name: ${{inputs.CONFIG}}
+    
     #调用公用编译核心WRT-CORE.yml
     uses: ./.github/workflows/WRT-CORE.yml
     with:
       #编译配置
-      WRT_CONFIG: ${{matrix.CONFIG}}
+      WRT_CONFIG: ${{inputs.CONFIG}}
       #默认主题
       WRT_THEME: bootstrap
       #默认主机名
@@ -54,17 +53,15 @@ jobs:
       WRT_WORD: 123456qwerty
       #默认地址
       WRT_IP: 192.168.13.1
-      #默认密码，仅作提示，修改无用
-      WRT_PW: 无
+      #登录密码，仅作提示，修改无用
+      WRT_LOGIN_PW: 无
       #源码链接
-      WRT_REPO: https://github.com/${{matrix.SOURCE}}.git
+      WRT_REPO: https://github.com/VIKINGYFY/immortalwrt.git
       #源码分支
-      WRT_BRANCH: ${{matrix.BRANCH}}
+      WRT_BRANCH: main
       #源码名称
-      WRT_SOURCE: ${{matrix.SOURCE}}
-      #插件调整
-      WRT_PACKAGE: ${{inputs.PACKAGE}}
+      WRT_SOURCE: VIKINGYFY/immortalwrt
       #仅输出配置文件
       WRT_TEST: ${{inputs.TEST}}
-      #仅输出配置文件
+      #加入USB相关驱动
       WRT_USB: ${{inputs.USB}}
