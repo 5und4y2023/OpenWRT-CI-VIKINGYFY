@@ -1,13 +1,19 @@
 IPQ_TARGET=$(grep -o 'CONFIG_TARGET_qualcommax_[^=]*' .config | sed -n 's/CONFIG_TARGET_qualcommax_//p' | head -n1)
 #mv $GITHUB_WORKSPACE/patch/998-ipq.sh package/base-files/files/etc/uci-defaults/998-ipq.sh
-mv $GITHUB_WORKSPACE/patch/998-$IPQ_TARGET.sh package/base-files/files/etc/uci-defaults/998-ipq.sh
 
 rm -rf .vermagic
-mv $GITHUB_WORKSPACE/vm/vikingyfy-$IPQ_TARGET vermagic
+if grep -q "luci-app-store=y" .config; then
+    mv $GITHUB_WORKSPACE/vm/vikingyfy-istore vermagic
+	mv $GITHUB_WORKSPACE/patch/998-istore.sh package/base-files/files/etc/uci-defaults/998-ipq.sh
+else
+    mv $GITHUB_WORKSPACE/vm/vikingyfy-$IPQ_TARGET vermagic
+	mv $GITHUB_WORKSPACE/patch/998-$IPQ_TARGET.sh package/base-files/files/etc/uci-defaults/998-ipq.sh
+fi
 sed -i '130d' include/kernel-defaults.mk
 sed -i '130i\\tcp $(TOPDIR)/vermagic $(LINUX_DIR)/.vermagic' include/kernel-defaults.mk
 sed -i '30d' package/kernel/linux/Makefile
 sed -i '30i\  STAMP_BUILT:=$(STAMP_BUILT)_$(shell cat $(LINUX_DIR)/.vermagic)' package/kernel/linux/Makefile
+
 
 if grep -q "openclash=y" .config; then
     git clone --depth 1 -b core https://github.com/vernesong/OpenClash.git  package/openclash-core
