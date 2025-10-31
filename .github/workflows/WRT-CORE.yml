@@ -43,6 +43,9 @@ on:
       WRT_USB:
         required: false
         type: string
+      UPLOAD_FIRMWARE:
+        required: false
+        type: string
 
 env:
   GITHUB_TOKEN: ${{secrets.GITHUB_TOKEN}}
@@ -59,6 +62,7 @@ env:
   WRT_PACKAGE: ${{inputs.WRT_PACKAGE}}
   WRT_TEST: ${{inputs.WRT_TEST}}
   WRT_USB: ${{inputs.WRT_USB}}
+  UPLOAD_FIRMWARE: ${{inputs.UPLOAD_FIRMWARE}}
 
 jobs:
   core:
@@ -89,8 +93,8 @@ jobs:
 
       - name: Initialization Values
         run: |
-          echo "WRT_DATE_FULL=$(TZ=UTC-8 date +"%y.%m.%d-%H.%M.%S")" >> $GITHUB_ENV
-          echo "WRT_DATE_BASE=$(TZ=UTC-8 date +"%y.%m.%d")" >> $GITHUB_ENV
+          echo "WRT_DATE_FULL=$(TZ=UTC-8 date +"%Y.%m.%d-%H.%M")" >> $GITHUB_ENV
+          echo "WRT_DATE_BASE=$(TZ=UTC-8 date +"%Y.%m.%d")" >> $GITHUB_ENV
           echo "WRT_MARK=${GITHUB_REPOSITORY%%/*}" >> $GITHUB_ENV
           echo "WRT_INFO=${WRT_SOURCE%%/*}" >> $GITHUB_ENV
           echo "WRT_TARGET=$(grep -m 1 -oP '^CONFIG_TARGET_\K[\w]+(?=\=y)' ./Config/$WRT_CONFIG.txt)" >> $GITHUB_ENV
@@ -99,7 +103,7 @@ jobs:
 
       - name: Clone Code
         run: |
-          git clone --depth=1 --single-branch --branch $WRT_BRANCH $WRT_REPO ./wrt/
+          git clone --single-branch --branch $WRT_BRANCH $WRT_REPO ./wrt/
 
           cd ./wrt/ && echo "WRT_HASH=$(git log -1 --pretty=format:'%h')" >> $GITHUB_ENV
 
@@ -152,6 +156,7 @@ jobs:
       - name: Update Feeds
         run: |
           cd ./wrt/
+          git checkout 2c9891a
           sed -i '1i src-git passwall_packages https://github.com/xiaorouji/openwrt-passwall-packages.git' feeds.conf.default
 
           ./scripts/feeds update -a
@@ -168,6 +173,10 @@ jobs:
         run: |
           cd ./wrt/
           cat $GITHUB_WORKSPACE/Config/$WRT_CONFIG.txt $GITHUB_WORKSPACE/Config/GENERAL.txt >> .config
+
+          if grep -q "luci-app-store=y" .config; then
+            cat $GITHUB_WORKSPACE/Config/IPK.txt >> .config            
+          fi
 
           if [ "$WRT_USB" = "true" ]; then
             cat $GITHUB_WORKSPACE/Config/ADD-USB.txt >> .config            
@@ -190,6 +199,8 @@ jobs:
           cd ./wrt/
 
           make -j$(nproc) || make -j1 V=s
+
+          echo "status=success" >> $GITHUB_OUTPUT
 
       - name: Machine Information
         run: |
@@ -227,13 +238,21 @@ jobs:
             make clean -j$(nproc)
           fi
 
+      - name: Upload Firmware To Artifact(将固件上传到Artifact)
+        if: env.UPLOAD_FIRMWARE == 'true'
+        uses: actions/upload-artifact@main
+        with:
+          name: ${{env.WRT_CONFIG}}-${{env.WRT_INFO}}-${{env.WRT_DATE_FULL}}
+          path: ./wrt/upload/*.*
+
       - name: Release Firmware
         uses: softprops/action-gh-release@master
         with:
-          tag_name: ${{env.WRT_CONFIG}}-${{env.WRT_INFO}}-${{env.WRT_BRANCH}}-${{env.WRT_DATE_FULL}}
+          tag_name: ${{env.WRT_CONFIG}}-based-on-${{env.WRT_INFO}}
           files: ./wrt/upload/*.*
           body: |
 
+            编译时间：${{env.WRT_DATE_FULL}}
             源码：${{env.WRT_REPO}}
             分支：${{env.WRT_BRANCH}}
             提交：${{env.WRT_HASH}}
@@ -245,7 +264,7 @@ jobs:
             登录密码：${{env.WRT_LOGIN_PW}}
 
             WIFI名称：${{env.WRT_SSID}}
-            WIFI密码：${{env.WRT_WIFI_P}}
+            WIFI密码：${{env.WRT_WIFI_PW}}
 
             内核版本：${{env.WRT_KVER}}
             插件列表：${{env.WRT_LIST}}
