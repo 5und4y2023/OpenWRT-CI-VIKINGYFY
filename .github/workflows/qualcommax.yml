@@ -45,10 +45,10 @@ jobs:
       WRT_CONFIG: ${{inputs.CONFIG}}
       #默认主题
       WRT_THEME: bootstrap
-      #默认主机名OpenWrt
-      WRT_NAME: OpenWrt
+      #默认主机名 OpenWrt ImmortalWrt
+      WRT_NAME: ImmortalWrt
       #默认WIFI名称
-      WRT_SSID: OpenWrt
+      WRT_SSID: ImmortalWrt
       #默认WIFI密码
       WRT_WIFI_PW: 123456qwerty
       #默认地址10.3.2.1##192.168.5.1
