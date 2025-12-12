@@ -74,4 +74,4 @@ jobs:
       #上传到Artifact
       UPLOAD_FIRMWARE: true
       # 发布
-      RELEASE_FIRMWARE: ${{inputs.RELEASE}}
+      RELEASE_TAG: ${{inputs.RELEASE}}
