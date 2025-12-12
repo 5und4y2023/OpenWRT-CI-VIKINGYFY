@@ -17,7 +17,13 @@ on:
           - IPQ60XX-WIFI-NO
           - IPQ807X-WIFI-YES
           - IPQ807X-WIFI-NO
-        
+      RELEASE:
+        type: choice
+        description: '选择要发布的地方'
+        required: true
+        options:
+          - 自用
+          - 定制
       USB:
         description: '添加USB驱动。'
         default: 'true'
@@ -67,3 +73,5 @@ jobs:
       WRT_USB: ${{inputs.USB}}
       #上传到Artifact
       UPLOAD_FIRMWARE: true
+      # 发布
+      RELEASE_FIRMWARE: ${{inputs.RELEASE}}
