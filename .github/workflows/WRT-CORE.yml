@@ -43,7 +43,7 @@ on:
       WRT_USB:
         required: false
         type: string
-      RELEASE_FIRMWARE:
+      RELEASE_TAG:
         required: false
         type: string
       UPLOAD_FIRMWARE:
@@ -65,7 +65,7 @@ env:
   WRT_PACKAGE: ${{inputs.WRT_PACKAGE}}
   WRT_TEST: ${{inputs.WRT_TEST}}
   WRT_USB: ${{inputs.WRT_USB}}
-  RELEASE_FIRMWARE: ${{inputs.RELEASE_FIRMWARE}}
+  RELEASE_TAG: ${{inputs.RELEASE_TAG}}
   UPLOAD_FIRMWARE: ${{inputs.UPLOAD_FIRMWARE}}
 
 jobs:
@@ -252,7 +252,7 @@ jobs:
       - name: Release Firmware
         uses: softprops/action-gh-release@master
         with:
-          tag_name: ${{env.WRT_CONFIG}}-based-on-${{env.WRT_INFO}}-${{env.RELEASE_FIRMWARE}}
+          tag_name: ${{env.WRT_CONFIG}}-based-on-${{env.WRT_INFO}}-${{env.RELEASE_TAG}}
           files: ./wrt/upload/*.*
           body: |
 
