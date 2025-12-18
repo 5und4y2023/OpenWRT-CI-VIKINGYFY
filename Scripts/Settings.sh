@@ -84,8 +84,8 @@ sed -i "s/192\.168\.[0-9]*\.[0-9]*/$WRT_IP/g" $(find ./feeds/luci/modules/luci-m
 
 #修改版本号
 sed -i 's/ImmortalWRT/ImmortalWrt/g' include/version.mk
-sed -i "s/%V/23.05/g" package/base-files/files/usr/lib/os-release
-sed -i "s/%V/23.05/g" package/base-files/files/etc/openwrt_release
+#sed -i "s/%V/23.05/g" package/base-files/files/usr/lib/os-release
+#sed -i "s/%V/23.05/g" package/base-files/files/etc/openwrt_release
 #添加编译日期标识
 sed -i "s/+ ' \/ ' : '') + (luciversion ||/:/g" feeds/luci/modules/luci-mod-status/htdocs/luci-static/resources/view/status/include/10_system.js
 sed -i "s/%C/\/ Complied on $(date +"%Y.%m.%d")/g" package/base-files/files/usr/lib/os-release
