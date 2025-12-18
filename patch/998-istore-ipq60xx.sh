@@ -33,7 +33,7 @@ uci set wireless.default_radio1.ssid=WiFi-$(cat /sys/class/ieee80211/phy0/macadd
 
 #uci set wireless.default_radio0.key=password
 #uci set wireless.default_radio1.key=password
-#uci commit wireless
+uci commit wireless
 
 #uci set network.usbwan=interface
 #uci set network.usbwan.proto='dhcp'
