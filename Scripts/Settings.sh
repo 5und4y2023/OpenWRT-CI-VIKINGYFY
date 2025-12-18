@@ -44,7 +44,7 @@ git clone --depth 1 https://github.com/xiaorouji/openwrt-passwall.git package/lu
 git clone --depth 1 https://github.com/xiaorouji/openwrt-passwall2.git package/luci-app-passwall2
 git clone --depth 1 https://github.com/nikkinikki-org/OpenWrt-momo.git package/OpenWrt-momo
 git clone --depth 1 https://github.com/nikkinikki-org/OpenWrt-nikki.git package/OpenWrt-nikki
-git clone --depth 1 https://github.com/fw876/helloworld.git package/helloworld-ssr-plus
+#git clone --depth 1 https://github.com/fw876/helloworld.git package/helloworld-ssr-plus
 
 rm -rf feeds/packages/net/{open-app-filter}
 git clone --depth 1 https://github.com/sbwml/luci-app-openlist2 package/openlist2
