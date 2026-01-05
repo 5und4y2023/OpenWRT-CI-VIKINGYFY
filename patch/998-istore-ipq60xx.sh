@@ -4,6 +4,9 @@ sed -ri '/check_signature/s@^[^#]@#&@' /etc/opkg.conf
 sed -i '/passwall/d' /etc/opkg/distfeeds.conf
 sed -i '/nss/d' /etc/opkg/distfeeds.conf
 sed -i '/sqm/d' /etc/opkg/distfeeds.conf
+sed -i '/nas/d' /etc/opkg/distfeeds.conf
+sed -i '/linkease/d' /etc/opkg/distfeeds.conf
+
 sed -i '/qualcommax/d' /etc/opkg/distfeeds.conf
 echo > /etc/opkg/distfeeds.conf
 sed -i '$a src/gz openwrt_core https://dl.openwrt.ai/releases/24.10/targets/qualcommax/ipq60xx/6.12.60' /etc/opkg/distfeeds.conf
