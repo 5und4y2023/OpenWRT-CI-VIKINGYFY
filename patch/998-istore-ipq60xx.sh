@@ -16,7 +16,7 @@ sed -i '$a src/gz openwrt_packages https://mirrors.pku.edu.cn/openwrt/releases/2
 sed -i '$a src/gz openwrt_routing https://mirrors.pku.edu.cn/openwrt/releases/24.10-SNAPSHOT/packages/aarch64_cortex-a53/routing' /etc/opkg/distfeeds.conf
 sed -i '$a src/gz openwrt_telephony https://mirrors.pku.edu.cn/openwrt/releases/24.10-SNAPSHOT/packages/aarch64_cortex-a53/telephony' /etc/opkg/distfeeds.conf
 echo > /etc/opkg/customfeeds.conf
-sed -i '$a #src/gz kiddin9 https://dl.openwrt.ai/releases/24.10/packages/aarch64_cortex-a53/kiddin9' /etc/opkg/customfeeds.conf
+sed -i '$a src/gz kiddin9 https://dl.openwrt.ai/releases/24.10/packages/aarch64_cortex-a53/kiddin9' /etc/opkg/customfeeds.conf
 
 #sed -i 's/24.10-SNAPSHOT/23.05-SNAPSHOT/g' /etc/opkg/distfeeds.conf
 #sed -i 's/openwrt/immortalwrt/g' /etc/opkg/distfeeds.conf
