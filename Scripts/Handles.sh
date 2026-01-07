@@ -2,6 +2,8 @@
 
 PKG_PATH="$GITHUB_WORKSPACE/wrt/package/"
 
+#预置HomeProxy数据
+
 
 #修改argon主题字体和颜色
 if [ -d *"luci-theme-argon"* ]; then
@@ -64,6 +66,7 @@ if [ -f "$DM_FILE" ]; then
 
 	cd $PKG_PATH && echo "diskman has been fixed!"
 fi
+
 #修复luci-app-netspeedtest相关问题
 if [ -d *"luci-app-netspeedtest"* ]; then
 	echo " "
