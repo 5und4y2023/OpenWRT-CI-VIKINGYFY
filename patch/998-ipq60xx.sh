@@ -5,7 +5,7 @@ sed -i '/nss/d' /etc/apk/repositories.d/distfeeds.list
 sed -i '/sqm/d' /etc/apk/repositories.d/distfeeds.list
 sed -i '/qualcommax/d' /etc/apk/repositories.d/distfeeds.list
 sed -i 's#downloads.immortalwrt.org#mirrors.pku.edu.cn/immortalwrt#g' /etc/apk/repositories.d/distfeeds.list
-sed -i '$a https://mirrors.pku.edu.cn/immortalwrt/snapshots/targets/qualcommax/ipq60xx/kmods/6.12.55-1-c38aa8f9bb9d721d48fd93243f7f206b/packages.adb' /etc/apk/repositories.d/distfeeds.list
+sed -i '$a https://mirrors.pku.edu.cn/immortalwrt/snapshots/targets/qualcommax/ipq60xx/kmods/6.12.63-1-0b3fcc93bd2fab2466858f36452c615d/packages.adb' /etc/apk/repositories.d/distfeeds.list
 sed -i '$a https://mirrors.pku.edu.cn/immortalwrt/snapshots/targets/qualcommax/ipq60xx/packages/packages.adb' /etc/apk/repositories.d/distfeeds.list
 
 # 设置所有网口可访问网页终端
@@ -28,6 +28,5 @@ uci commit wireless
 #uci add_list firewall.cfg03dc81.network='usbwan'
 #uci commit network
 uci commit
-cp /etc/my-clash /etc/openclash/core/clash_meta
 #不用重启network，源码自带
 exit 0
