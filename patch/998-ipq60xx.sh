@@ -15,13 +15,13 @@ uci delete ttyd.@ttyd[0].interface
 uci set dropbear.@dropbear[0].Interface=''
 
 # wifi设置
-#uci set wireless.default_radio0.ssid=WiFi-$(cat /sys/class/ieee80211/phy0/macaddress|awk -F ":" '{print $5""$6 }' | tr 'a-z' 'A-Z')-5G
-#uci set wireless.radio0.txpower='20'
-#uci set wireless.default_radio1.ssid=WiFi-$(cat /sys/class/ieee80211/phy0/macaddress|awk -F ":" '{print $5""$6 }' | tr 'a-z' 'A-Z')-2.4G
-#uci set wireless.radio1.txpower='20'
-#uci commit wireless
+uci set wireless.default_radio0.ssid=WiFi-$(cat /sys/class/ieee80211/phy0/macaddress|awk -F ":" '{print $5""$6 }' | tr 'a-z' 'A-Z')-5G
+uci set wireless.radio0.txpower='20'
+uci set wireless.default_radio1.ssid=WiFi-$(cat /sys/class/ieee80211/phy0/macaddress|awk -F ":" '{print $5""$6 }' | tr 'a-z' 'A-Z')-2.4G
+uci set wireless.radio1.txpower='20'
+uci commit wireless
 
-uci set network.lan.ipaddr='192.168.23.1'
+#uci set network.lan.ipaddr='192.168.23.1'
 #uci set network.usbwan=interface
 #uci set network.usbwan.proto='dhcp'
 #uci set network.usbwan.device='eth0'
