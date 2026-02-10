@@ -17,6 +17,7 @@ on:
           - IPQ60XX-WIFI-NO
           - IPQ807X-WIFI-YES
           - IPQ807X-WIFI-NO
+          - IPQ50XX-WIFI-YES
       RELEASE:
         type: choice
         description: '选择要发布的地方'
