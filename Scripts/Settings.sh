@@ -79,6 +79,7 @@ sed -i "s/192\.168\.[0-9]*\.[0-9]*/$WRT_IP/g" $(find ./feeds/luci/modules/luci-m
 
 #修改版本号
 sed -i 's/ImmortalWRT/OpenWrt/g' include/version.mk
+sed -i 's/ImmortalWrt/OpenWrt/g' feeds/luci/modules/luci-mod-network/htdocs/luci-static/resources/view/network/wireless.js
 sed -i "s/%V/25.12/g" package/base-files/files/usr/lib/os-release
 sed -i "s/%V/25.12/g" package/base-files/files/etc/openwrt_release
 #添加编译日期标识
