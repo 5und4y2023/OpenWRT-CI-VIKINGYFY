@@ -1,4 +1,6 @@
 #!/bin/sh
+uci set luci.main.mediaurlbase='/luci-static/bootstrap'
+uci commit luci
 
 uci del network.wan6
 uci set network.lan.ip6assign=64
