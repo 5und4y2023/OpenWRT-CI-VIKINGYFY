@@ -1,29 +1,6 @@
 #!/bin/sh
-uci set luci.main.mediaurlbase='/luci-static/bootstrap'
-uci commit luci
-
-uci del network.wan6
-uci set network.lan.ip6assign=64
-uci del network.globals.ula_prefix
-uci set dhcp.lan.dns_service='0'
-uci del dhcp.lan.dhcpv6
-uci del dhcp.lan.ndp
-uci set dhcp.lan.ra='server'
-uci del dhcp.lan.ra_flags
-uci add_list dhcp.lan.ra_flags='none'
-uci set network.lan.delegate='0'
-uci set network.lan.ip6ifaceid='random'
-
-uci set network.wan.proto='pppoe'
-uci set network.wan.username='037606332332'
-uci set network.wan.password='332332'
-
-uci commit dhcp
-uci commit network
-uci commit
-
-sed -i 's/root::0:0:99999:7:::/root:$1$uqDPdTlT$M6M5orrncaHsn.z.RWRcL\/:0:0:99999:7:::/g' /etc/shadow
-sed -i 's/root:::0:99999:7:::/root:$1$uqDPdTlT$M6M5orrncaHsn.z.RWRcL\/:0:0:99999:7:::/g' /etc/shadow
+#uci set luci.main.mediaurlbase='/luci-static/bootstrap'
+#uci commit luci
 
 sed -ri '/check_signature/s@^[^#]@#&@' /etc/opkg.conf
 sed -i '/passwall/d' /etc/apk/repositories.d/distfeeds.list
