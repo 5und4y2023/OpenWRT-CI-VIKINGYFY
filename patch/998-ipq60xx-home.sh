@@ -2,6 +2,13 @@
 uci set luci.main.mediaurlbase='/luci-static/bootstrap'
 uci commit luci
 
+# wifi设置
+uci set wireless.default_radio0.ssid=CMCC-E155
+uci set wireless.radio0.txpower='20'
+uci set wireless.default_radio1.ssid=CMCC-E122
+uci set wireless.radio1.txpower='20'
+uci commit wireless
+
 uci del network.lan.ipaddr
 uci add_list network.lan.ipaddr='192.168.13.1/24'
 uci del network.wan6
