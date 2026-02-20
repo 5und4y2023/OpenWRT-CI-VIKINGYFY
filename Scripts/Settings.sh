@@ -28,8 +28,6 @@ mv package/small-package/adguardhome package/adguardhome
 mv package/small-package/luci-app-adguardhome package/luci-app-adguardhome
 mv package/small-package/luci-app-easymesh package/luci-app-easymesh
 mv package/small-package/luci-app-ikoolproxy package/luci-app-ikoolproxy
-mv package/small-package/lucky package/lucky
-mv package/small-package/luci-app-lucky package/luci-app-lucky
 mv package/small-package/luci-app-pushbot package/luci-app-pushbot
 mv package/small-package/wrtbwmon package/wrtbwmon
 mv package/small-package/luci-app-wrtbwmon package/luci-app-wrtbwmon
@@ -45,6 +43,7 @@ git clone --depth 1 https://github.com/Openwrt-Passwall/openwrt-passwall2.git pa
 git clone --depth 1 https://github.com/nikkinikki-org/OpenWrt-momo.git package/OpenWrt-momo
 git clone --depth 1 https://github.com/nikkinikki-org/OpenWrt-nikki.git package/OpenWrt-nikki
 #git clone --depth 1 https://github.com/fw876/helloworld.git package/helloworld-ssr-plus
+git clone --depth 1 https://github.com/gdy666/luci-app-lucky.git package/lucky
 
 rm -rf feeds/packages/net/{open-app-filter}
 git clone --depth 1 https://github.com/sbwml/luci-app-openlist2 package/openlist2
