@@ -8,7 +8,7 @@ uci set wireless.radio0.txpower='20'
 uci set wireless.default_radio1.ssid=CMCC-E122
 uci set wireless.radio1.txpower='20'
 uci set wireless.default_radio0.key=86880959189
-uci set wireless.default_radio1.key=86880959189
+uci set wireless.default_radio1.key=86880959Liu
 uci commit wireless
 
 uci del network.lan.ipaddr
@@ -35,7 +35,7 @@ sed -i '/nss/d' /etc/apk/repositories.d/distfeeds.list
 sed -i '/sqm/d' /etc/apk/repositories.d/distfeeds.list
 sed -i '/qualcommax/d' /etc/apk/repositories.d/distfeeds.list
 sed -i 's#downloads.immortalwrt.org#mirrors.pku.edu.cn/immortalwrt#g' /etc/apk/repositories.d/distfeeds.list
-sed -i '$a https://downloads.openwrt.org/snapshots/targets/qualcommax/ipq60xx/kmods/6.12.71-1-67bbb6dcbb55390b208878d242522feb/packages.adb' /etc/apk/repositories.d/distfeeds.list
+sed -i '$a https://downloads.openwrt.org/snapshots/targets/qualcommax/ipq60xx/kmods/6.12.71-1-f3a2414047faa4fea126ea97c911a6ab/packages.adb' /etc/apk/repositories.d/distfeeds.list
 sed -i '$a https://mirrors.pku.edu.cn/immortalwrt/snapshots/targets/qualcommax/ipq60xx/packages/packages.adb' /etc/apk/repositories.d/distfeeds.list
 
 # 设置所有网口可访问网页终端
