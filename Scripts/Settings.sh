@@ -8,7 +8,7 @@ if grep -Eq "luci-app-(store|kwrt)=y" .config; then
 	mv $GITHUB_WORKSPACE/patch/998-istore-$IPQ_TARGET.sh package/base-files/files/etc/uci-defaults/998-ipq.sh
 else
     mv $GITHUB_WORKSPACE/vm/vikingyfy-$IPQ_TARGET vermagic
-	mv $GITHUB_WORKSPACE/patch/998-$IPQ_TARGET.sh package/base-files/files/etc/uci-defaults/998-ipq.sh
+	mv $GITHUB_WORKSPACE/patch/998-$IPQ_TARGET-home.sh package/base-files/files/etc/uci-defaults/998-ipq.sh
 fi
 
 #mv $GITHUB_WORKSPACE/patch/xy/footer.ut feeds/luci/themes/luci-theme-argon/ucode/template/themes/argon/footer.ut
