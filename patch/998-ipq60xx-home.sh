@@ -34,7 +34,7 @@ sed -i '/passwall/d' /etc/apk/repositories.d/distfeeds.list
 sed -i '/nss/d' /etc/apk/repositories.d/distfeeds.list
 sed -i '/sqm/d' /etc/apk/repositories.d/distfeeds.list
 sed -i '/qualcommax/d' /etc/apk/repositories.d/distfeeds.list
-sed -i 's#downloads.immortalwrt.org#mirrors.pku.edu.cn/immortalwrt#g' /etc/apk/repositories.d/distfeeds.list
+sed -i 's#downloads.immortalwrt.org#mirror.nju.edu.cn/immortalwrt#g' /etc/apk/repositories.d/distfeeds.list
 sed -i '$a https://downloads.openwrt.org/snapshots/targets/qualcommax/ipq60xx/kmods/6.12.71-1-f3a2414047faa4fea126ea97c911a6ab/packages.adb' /etc/apk/repositories.d/distfeeds.list
 sed -i '$a https://mirrors.pku.edu.cn/immortalwrt/snapshots/targets/qualcommax/ipq60xx/packages/packages.adb' /etc/apk/repositories.d/distfeeds.list
 
