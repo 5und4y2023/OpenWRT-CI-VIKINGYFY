@@ -1,4 +1,5 @@
 #云编译公用核心
+##${{env.WRT_INFO}}
 name: WRT-CORE
 
 on:
@@ -250,7 +251,7 @@ jobs:
       - name: Release Firmware
         uses: softprops/action-gh-release@master
         with:
-          tag_name: qualcommax-based-on-${{env.WRT_INFO}}-${{env.RELEASE_TAG}}
+          tag_name: qualcommax-based-on-VIKINGYFY-${{env.RELEASE_TAG}}
           files: ./wrt/upload/*.*
           body: |
 
