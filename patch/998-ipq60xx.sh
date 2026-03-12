@@ -8,8 +8,8 @@ sed -i '/nss/d' /etc/apk/repositories.d/distfeeds.list
 sed -i '/sqm/d' /etc/apk/repositories.d/distfeeds.list
 sed -i '/qualcommax/d' /etc/apk/repositories.d/distfeeds.list
 sed -i 's#downloads.immortalwrt.org#mirrors.pku.edu.cn/immortalwrt#g' /etc/apk/repositories.d/distfeeds.list
-sed -i '$a https://downloads.openwrt.org/releases/25.12.0/targets/qualcommax/ipq60xx/kmods/6.12.71-1-d65aec9eed37393a3ccdc8363369c0dc/packages.adb' /etc/apk/repositories.d/distfeeds.list
-sed -i '$a https://downloads.openwrt.org/releases/25.12.0/targets/qualcommax/ipq60xx/packages/packages.adb' /etc/apk/repositories.d/distfeeds.list
+sed -i '$a https://downloads.openwrt.org/snapshots/targets/qualcommax/ipq60xx/kmods/6.12.74-1-87478ae91b9261b7dec00b9cd63abc01/packages.adb' /etc/apk/repositories.d/distfeeds.list
+sed -i '$a https://downloads.openwrt.org/snapshots/targets/qualcommax/ipq60xx/packages/packages.adb' /etc/apk/repositories.d/distfeeds.list
 
 # 设置所有网口可访问网页终端
 uci delete ttyd.@ttyd[0].interface
