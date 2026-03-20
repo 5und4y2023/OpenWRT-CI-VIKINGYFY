@@ -19,7 +19,7 @@ fi
 
 
 rm -rf feeds/packages/lang/golang
-git clone https://github.com/sbwml/packages_lang_golang -b 25.x feeds/packages/lang/golang
+git clone https://github.com/sbwml/packages_lang_golang feeds/packages/lang/golang
 
 rm -rf feeds/packages/net/{adguardhome,smartdns}
 rm -rf feeds/luci/applications/{luci-app-adguardhome,luci-app-smartdns}
