@@ -2,7 +2,7 @@
 #uci set luci.main.mediaurlbase='/luci-static/bootstrap'
 #uci commit luci
 
-sed -ri '/check_signature/s@^[^#]@#&@' /etc/opkg.conf
+
 sed -i '/passwall/d' /etc/apk/repositories.d/distfeeds.list
 sed -i '/nss/d' /etc/apk/repositories.d/distfeeds.list
 sed -i '/sqm/d' /etc/apk/repositories.d/distfeeds.list
