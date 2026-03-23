@@ -19,7 +19,7 @@ fi
 
 
 rm -rf feeds/packages/lang/golang
-git clone https://github.com/sbwml/packages_lang_golang feeds/packages/lang/golang
+git clone --depth 1 https://github.com/sbwml/packages_lang_golang feeds/packages/lang/golang
 
 rm -rf feeds/packages/net/{adguardhome,smartdns}
 rm -rf feeds/luci/applications/{luci-app-adguardhome,luci-app-smartdns}
@@ -69,6 +69,7 @@ fi
 
 
 ########################################################################################################################################
+mv $GITHUB_WORKSPACE/patch/banner package/base-files/files/etc/banner
 #移除luci-app-attendedsysupgrade
 sed -i "/attendedsysupgrade/d" $(find ./feeds/luci/collections/ -type f -name "Makefile")
 #修改默认主题
