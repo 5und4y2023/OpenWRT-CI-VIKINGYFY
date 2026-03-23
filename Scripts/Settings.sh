@@ -3,7 +3,7 @@
 IPQ_TARGET=$(grep -o 'CONFIG_TARGET_qualcommax_[^=]*' .config | sed -n 's/CONFIG_TARGET_qualcommax_//p' | head -n1)
 
 rm -rf .vermagic
-if grep -Eq "luci-app-(store|kwrt)=y" .config; then
+if grep -Eq "luci-app-kwrt=y" .config; then
     mv $GITHUB_WORKSPACE/vm/vikingyfy-istore vermagic
 	mv $GITHUB_WORKSPACE/patch/998-istore-$IPQ_TARGET.sh package/base-files/files/etc/uci-defaults/998-ipq.sh
 else
