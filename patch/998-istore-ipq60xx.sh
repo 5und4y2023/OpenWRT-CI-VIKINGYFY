@@ -9,14 +9,14 @@ sed -i '/linkease/d' /etc/opkg/distfeeds.conf
 
 sed -i '/qualcommax/d' /etc/opkg/distfeeds.conf
 echo > /etc/opkg/distfeeds.conf
-sed -i '$a src/gz openwrt_core https://dl.openwrt.ai/releases/25.12/targets/qualcommax/ipq60xx/6.12.71' /etc/opkg/distfeeds.conf
+sed -i '$a src/gz openwrt_core https://dl.openwrt.ai/releases/25.12/targets/qualcommax/ipq60xx/6.12.74' /etc/opkg/distfeeds.conf
 sed -i '$a src/gz openwrt_base https://dl.openwrt.ai/packages-25.12/aarch64_cortex-a53/base' /etc/opkg/distfeeds.conf
 sed -i '$a src/gz openwrt_luci https://dl.openwrt.ai/packages-25.12/aarch64_cortex-a53/luci' /etc/opkg/distfeeds.conf
 sed -i '$a src/gz openwrt_packages https://dl.openwrt.ai/packages-25.12/aarch64_cortex-a53/packages' /etc/opkg/distfeeds.conf
 sed -i '$a src/gz openwrt_routing https://dl.openwrt.ai/packages-25.12/aarch64_cortex-a53/routing' /etc/opkg/distfeeds.conf
-sed -i '$a src/gz openwrt_telephony https://mirror.nju.edu.cn/openwrt/releases/24.10.5/packages/aarch64_cortex-a53/telephony' /etc/opkg/distfeeds.conf
+sed -i '$a src/gz openwrt_telephony https://mirror.nju.edu.cn/openwrt/releases/24.10.6/packages/aarch64_cortex-a53/telephony' /etc/opkg/distfeeds.conf
 #echo > /etc/opkg/customfeeds.conf
-sed -i '$a #src/gz kiddin9 https://dl.openwrt.ai/releases/25.12/packages/aarch64_cortex-a53/kiddin9' /etc/opkg/customfeeds.conf
+sed -i '$a src/gz kiddin9 https://dl.openwrt.ai/releases/25.12/packages/aarch64_cortex-a53/kiddin9' /etc/opkg/customfeeds.conf
 
 #sed -i 's/24.10-SNAPSHOT/23.05-SNAPSHOT/g' /etc/opkg/distfeeds.conf
 #sed -i 's/openwrt/immortalwrt/g' /etc/opkg/distfeeds.conf
