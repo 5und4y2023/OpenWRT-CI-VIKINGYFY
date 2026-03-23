@@ -23,12 +23,14 @@ git clone --depth 1 https://github.com/sbwml/packages_lang_golang feeds/packages
 
 rm -rf feeds/packages/net/{adguardhome,smartdns}
 rm -rf feeds/luci/applications/{luci-app-adguardhome,luci-app-smartdns}
-git clone --depth 1 https://github.com/kenzok8/small-package.git package/small-package
+git clone --depth 1 https://github.com/kenzok8/jell.git package/small-package
 mv package/small-package/adguardhome package/adguardhome
 mv package/small-package/luci-app-adguardhome package/luci-app-adguardhome
 mv package/small-package/luci-app-easymesh package/luci-app-easymesh
 mv package/small-package/luci-app-ikoolproxy package/luci-app-ikoolproxy
 mv package/small-package/luci-app-pushbot package/luci-app-pushbot
+mv package/small-package/smartdns package/smartdns
+mv package/small-package/luci-app-smartdns package/luci-app-smartdns
 mv package/small-package/wrtbwmon package/wrtbwmon
 mv package/small-package/luci-app-wrtbwmon package/luci-app-wrtbwmon
 rm -rf package/small-package
@@ -42,7 +44,7 @@ git clone --depth 1 https://github.com/Openwrt-Passwall/openwrt-passwall.git pac
 git clone --depth 1 https://github.com/Openwrt-Passwall/openwrt-passwall2.git package/luci-app-passwall2
 git clone --depth 1 https://github.com/nikkinikki-org/OpenWrt-momo.git package/OpenWrt-momo
 git clone --depth 1 https://github.com/nikkinikki-org/OpenWrt-nikki.git package/OpenWrt-nikki
-#git clone --depth 1 https://github.com/fw876/helloworld.git package/helloworld-ssr-plus
+git clone --depth 1 https://github.com/fw876/helloworld.git package/helloworld-ssr-plus
 git clone --depth 1 https://github.com/gdy666/luci-app-lucky.git package/lucky
 
 rm -rf feeds/packages/net/{open-app-filter}
