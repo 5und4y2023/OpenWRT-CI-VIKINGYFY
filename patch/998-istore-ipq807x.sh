@@ -6,14 +6,14 @@ sed -i '/nss/d' /etc/opkg/distfeeds.conf
 sed -i '/sqm/d' /etc/opkg/distfeeds.conf
 sed -i '/qualcommax/d' /etc/opkg/distfeeds.conf
 echo > /etc/opkg/distfeeds.conf
-sed -i '$a src/gz openwrt_core https://dl.openwrt.ai/releases/24.10/targets/qualcommax/ipq60xx/6.12.60' /etc/opkg/distfeeds.conf
-sed -i '$a src/gz openwrt_base https://mirrors.pku.edu.cn/openwrt/releases/24.10-SNAPSHOT/packages/aarch64_cortex-a53/base' /etc/opkg/distfeeds.conf
-sed -i '$a src/gz openwrt_luci https://mirrors.pku.edu.cn/openwrt/releases/24.10-SNAPSHOT/packages/aarch64_cortex-a53/luci' /etc/opkg/distfeeds.conf
-sed -i '$a src/gz openwrt_packages https://mirrors.pku.edu.cn/openwrt/releases/24.10-SNAPSHOT/packages/aarch64_cortex-a53/packages' /etc/opkg/distfeeds.conf
-sed -i '$a src/gz openwrt_routing https://mirrors.pku.edu.cn/openwrt/releases/24.10-SNAPSHOT/packages/aarch64_cortex-a53/routing' /etc/opkg/distfeeds.conf
-sed -i '$a src/gz openwrt_telephony https://mirrors.pku.edu.cn/openwrt/releases/24.10-SNAPSHOT/packages/aarch64_cortex-a53/telephony' /etc/opkg/distfeeds.conf
-echo > /etc/opkg/customfeeds.conf
-sed -i '$a #src/gz kiddin9 https://dl.openwrt.ai/releases/24.10/packages/aarch64_cortex-a53/kiddin9' /etc/opkg/customfeeds.conf
+sed -i '$a src/gz openwrt_core https://dl.openwrt.ai/releases/25.12/targets/qualcommax/ipq807x/6.12.74' /etc/opkg/distfeeds.conf
+sed -i '$a src/gz openwrt_base https://dl.openwrt.ai/packages-25.12/aarch64_cortex-a53/base' /etc/opkg/distfeeds.conf
+sed -i '$a src/gz openwrt_luci https://dl.openwrt.ai/packages-25.12/aarch64_cortex-a53/luci' /etc/opkg/distfeeds.conf
+sed -i '$a src/gz openwrt_packages https://dl.openwrt.ai/packages-25.12/aarch64_cortex-a53/packages' /etc/opkg/distfeeds.conf
+sed -i '$a src/gz openwrt_routing https://dl.openwrt.ai/packages-25.12/aarch64_cortex-a53/routing' /etc/opkg/distfeeds.conf
+sed -i '$a src/gz openwrt_telephony https://mirror.nju.edu.cn/openwrt/releases/24.10.6/packages/aarch64_cortex-a53/telephony' /etc/opkg/distfeeds.conf
+#echo > /etc/opkg/customfeeds.conf
+sed -i '$a src/gz kiddin9 https://dl.openwrt.ai/releases/25.12/packages/aarch64_cortex-a53/kiddin9' /etc/opkg/customfeeds.conf
 
 #sed -i 's/root::0:0:99999:7:::/root:$1$V4UetPzk$CYXluq4wUazHjmCDBCqXF.:0:0:99999:7:::/g' /etc/shadow
 #sed -i 's/root:::0:99999:7:::/root:$1$V4UetPzk$CYXluq4wUazHjmCDBCqXF.:0:0:99999:7:::/g' /etc/shadow
@@ -25,10 +25,10 @@ uci delete ttyd.@ttyd[0].interface
 uci set dropbear.@dropbear[0].Interface=''
 
 # wifi设置
-#uci set wireless.default_radio0.ssid=WiFi-$(cat /sys/class/ieee80211/phy0/macaddress|awk -F ":" '{print $5""$6 }' | tr 'a-z' 'A-Z')-5G
+uci set wireless.default_radio0.ssid=WiFi-$(cat /sys/class/ieee80211/phy0/macaddress|awk -F ":" '{print $5""$6 }' | tr 'a-z' 'A-Z')-5G
 #uci set wireless.default_radio0.ssid=OpenWrt-5G
 #uci set wireless.radio0.txpower='20'
-#uci set wireless.default_radio1.ssid=WiFi-$(cat /sys/class/ieee80211/phy0/macaddress|awk -F ":" '{print $5""$6 }' | tr 'a-z' 'A-Z')-2.4G
+uci set wireless.default_radio1.ssid=WiFi-$(cat /sys/class/ieee80211/phy0/macaddress|awk -F ":" '{print $5""$6 }' | tr 'a-z' 'A-Z')-2.4G
 #uci set wireless.radio1.txpower='20'
 
 #uci set wireless.default_radio0.key=password
