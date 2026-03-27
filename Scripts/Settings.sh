@@ -21,7 +21,7 @@ fi
 rm -rf feeds/packages/lang/golang
 git clone --depth 1 https://github.com/sbwml/packages_lang_golang feeds/packages/lang/golang
 
-rm -rf feeds/packages/net/{adguardhome,smartdns}
+rm -rf feeds/packages/net/{adguardhome}
 rm -rf feeds/luci/applications/{luci-app-adguardhome,luci-app-smartdns}
 git clone --depth 1 https://github.com/kenzok8/jell.git package/small-package
 mv package/small-package/adguardhome package/adguardhome
@@ -29,13 +29,12 @@ mv package/small-package/luci-app-adguardhome package/luci-app-adguardhome
 mv package/small-package/luci-app-easymesh package/luci-app-easymesh
 mv package/small-package/luci-app-ikoolproxy package/luci-app-ikoolproxy
 mv package/small-package/luci-app-pushbot package/luci-app-pushbot
-mv package/small-package/smartdns package/smartdns
 mv package/small-package/luci-app-smartdns package/luci-app-smartdns
 mv package/small-package/wrtbwmon package/wrtbwmon
 mv package/small-package/luci-app-wrtbwmon package/luci-app-wrtbwmon
 rm -rf package/small-package
 
-rm -rf feeds/packages/net/{mosdns,v2ray-geodata}
+rm -rf feeds/packages/net/{mosdns,v2ray-geodata,open-app-filter}
 rm -rf feeds/luci/applications/{luci-app-openclash,luci-app-passwall,luci-app-ssr-plus,luci-app-mosdns}
 git clone --depth 1 https://github.com/sbwml/luci-app-mosdns -b v5 package/mosdns
 git clone --depth 1 https://github.com/sbwml/v2ray-geodata package/v2ray-geodata
@@ -45,9 +44,11 @@ git clone --depth 1 https://github.com/Openwrt-Passwall/openwrt-passwall2.git pa
 git clone --depth 1 https://github.com/nikkinikki-org/OpenWrt-momo.git package/OpenWrt-momo
 git clone --depth 1 https://github.com/nikkinikki-org/OpenWrt-nikki.git package/OpenWrt-nikki
 git clone --depth 1 https://github.com/fw876/helloworld.git package/helloworld-ssr-plus
-git clone --depth 1 https://github.com/gdy666/luci-app-lucky.git package/lucky
 
-rm -rf feeds/packages/net/{open-app-filter}
+git clone --depth 1 https://github.com/gdy666/luci-app-lucky.git package/lucky
+git clone --depth 1 https://github.com/timsaya/luci-app-bandix.git package/luci-app-bandix
+git clone --depth 1 https://github.com/timsaya/openwrt-bandix.git package/openwrt-bandix
+git clone --depth 1 https://github.com/destan19/OpenAppFilter.git package/OpenAppFilter
 git clone --depth 1 https://github.com/sbwml/luci-app-openlist2 package/openlist2
 
 sed -i '129d' include/kernel-defaults.mk
