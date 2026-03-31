@@ -6,9 +6,10 @@
 sed -i '/passwall/d' /etc/apk/repositories.d/distfeeds.list
 sed -i '/nss/d' /etc/apk/repositories.d/distfeeds.list
 sed -i '/sqm/d' /etc/apk/repositories.d/distfeeds.list
+sed -i '/video/d' /etc/apk/repositories.d/distfeeds.list
 sed -i '/qualcommax/d' /etc/apk/repositories.d/distfeeds.list
 sed -i 's#downloads.immortalwrt.org#mirrors.vsean.net/openwrt#g' /etc/apk/repositories.d/distfeeds.list
-sed -i '$a https://mirrors.vsean.net/openwrt/snapshots/targets/qualcommax/ipq60xx/kmods/6.12.74-1-f59643a846fedc2d716e81ca0d662ba6/packages.adb' /etc/apk/repositories.d/distfeeds.list
+sed -i '$a https://mirrors.vsean.net/openwrt/snapshots/targets/qualcommax/ipq60xx/kmods/6.12.77-1-ddaf4cbd24e7b8dd27fd42054531a6f8/packages.adb' /etc/apk/repositories.d/distfeeds.list
 sed -i '$a https://mirrors.vsean.net/openwrt/snapshots/targets/qualcommax/ipq60xx/packages/packages.adb' /etc/apk/repositories.d/distfeeds.list
 
 # 设置所有网口可访问网页终端
