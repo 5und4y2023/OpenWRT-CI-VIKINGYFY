@@ -26,8 +26,8 @@ uci set wireless.radio1.txpower='20'
 if uci -q get wireless.default_radio2 >/dev/null; then
     uci set wireless.default_radio2.ssid='WiFi-$(cat /sys/class/ieee80211/phy0/macaddress|awk -F ":" '{print $5""$6 }' | tr 'a-z' 'A-Z')-5G2'
 fi
-uci set wireless.default_radio0.key='123456qwerty'
-uci set wireless.default_radio1.key='123456qwerty'
+#uci set wireless.default_radio0.key='123456qwerty'
+#uci set wireless.default_radio1.key='123456qwerty'
 uci commit wireless
 
 #uci set network.lan.ipaddr='192.168.23.1'
