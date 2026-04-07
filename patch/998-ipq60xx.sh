@@ -47,7 +47,7 @@ uci del dhcp.lan.dhcpv6
 uci del dhcp.lan.ndp
 uci del network.wan6
 uci del network.lan.ip6assign
-uci set network.lan.ipaddr=192.168.6.1
+#uci set network.lan.ipaddr=192.168.6.1
 
 uci commit dhcp
 uci commit network
