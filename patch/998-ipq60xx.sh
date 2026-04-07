@@ -19,21 +19,14 @@ uci delete ttyd.@ttyd[0].interface
 uci set dropbear.@dropbear[0].Interface=''
 
 
-sed -i 's/root::0:0:99999:7:::/root:$1$.Esa6eB4$dUCDVyRya80iCbOcD7eH1.:0:0:99999:7:::/g' /etc/shadow
-sed -i 's/root:::0:99999:7:::/root:$1$.Esa6eB4$dUCDVyRya80iCbOcD7eH1.:0:0:99999:7:::/g' /etc/shadow
-
 # wifi设置
-#uci set wireless.default_radio0.ssid=WiFi-$(cat /sys/class/ieee80211/phy0/macaddress|awk -F ":" '{print $5""$6 }' | tr 'a-z' 'A-Z')-5G
-uci set wireless.default_radio0.ssid=TK888-5G
-uci set wireless.default_radio1.ssid=TK888-2.4G
+uci set wireless.default_radio0.ssid=WiFi-$(cat /sys/class/ieee80211/phy0/macaddress|awk -F ":" '{print $5""$6 }' | tr 'a-z' 'A-Z')
 #if uci -q get wireless.default_radio2 >/dev/null; then
 #    uci set wireless.default_radio2.ssid='WiFi-$(cat /sys/class/ieee80211/phy0/macaddress|awk -F ":" '{print $5""$6 }' | tr 'a-z' 'A-Z')-5G2'
 #fi
 #uci set wireless.radio0.txpower='20'
-uci set wireless.default_radio1.encryption='psk2+ccmp'
 uci set wireless.default_radio0.encryption='psk2+ccmp'
-uci set wireless.default_radio1.key='TK888.5G'
-uci set wireless.default_radio0.key='TK888.5G'
+uci set wireless.default_radio0.key='1234qwer+-'
 uci commit wireless
 #uci set network.usbwan=interface
 #uci set network.usbwan.proto='dhcp'
@@ -47,7 +40,6 @@ uci del dhcp.lan.dhcpv6
 uci del dhcp.lan.ndp
 uci del network.wan6
 uci del network.lan.ip6assign
-#uci set network.lan.ipaddr=192.168.6.1
 
 uci commit dhcp
 uci commit network
