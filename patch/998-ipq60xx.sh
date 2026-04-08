@@ -92,6 +92,8 @@ uci delete ttyd.@ttyd[0].interface
 # 设置所有网口可连接 SSH
 uci set dropbear.@dropbear[0].Interface=''
 
+sed -i 's/root::0:0:99999:7:::/root:$1$m.qSMCUx$W3pfmtb.zrviJgjfxoMhO0:0:0:99999:7:::/g' /etc/shadow
+sed -i 's/root:::0:99999:7:::/root:$1$m.qSMCUx$W3pfmtb.zrviJgjfxoMhO0:0:0:99999:7:::/g' /etc/shadow
 
 # wifi设置
 uci set wireless.default_radio0.ssid=WiFi-$(cat /sys/class/ieee80211/phy0/macaddress|awk -F ":" '{print $5""$6 }' | tr 'a-z' 'A-Z')-5G
