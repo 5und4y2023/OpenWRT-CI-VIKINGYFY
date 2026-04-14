@@ -1,6 +1,5 @@
 #!/bin/sh
-#uci set luci.main.mediaurlbase='/luci-static/bootstrap'
-#uci commit luci
+
 # 提取MAC地址
 # br-lan
 FRPMAC=$(ip link show br-lan | awk '/link\/ether/ {print $2}')
@@ -77,40 +76,21 @@ uci set frpc.@conf[-1].remote_port='0'
 uci commit
 /etc/init.d/frpc restart
 
-sed -i '/passwall/d' /etc/apk/repositories.d/distfeeds.list
-sed -i '/nss/d' /etc/apk/repositories.d/distfeeds.list
-sed -i '/sqm/d' /etc/apk/repositories.d/distfeeds.list
-sed -i '/video/d' /etc/apk/repositories.d/distfeeds.list
-sed -i '/qualcommax/d' /etc/apk/repositories.d/distfeeds.list
-sed -i 's#downloads.immortalwrt.org#mirrors.vsean.net/openwrt#g' /etc/apk/repositories.d/distfeeds.list
-sed -i '$a https://mirrors.vsean.net/openwrt/snapshots/targets/qualcommax/ipq60xx/kmods/6.12.77-1-ddaf4cbd24e7b8dd27fd42054531a6f8/packages.adb' /etc/apk/repositories.d/distfeeds.list
-sed -i '$a https://mirrors.vsean.net/openwrt/snapshots/targets/qualcommax/ipq60xx/packages/packages.adb' /etc/apk/repositories.d/distfeeds.list
-
-# 设置所有网口可访问网页终端
-uci delete ttyd.@ttyd[0].interface
-
-# 设置所有网口可连接 SSH
-uci set dropbear.@dropbear[0].Interface=''
 
 sed -i 's/root::0:0:99999:7:::/root:$1$m.qSMCUx$W3pfmtb.zrviJgjfxoMhO0:0:0:99999:7:::/g' /etc/shadow
 sed -i 's/root:::0:99999:7:::/root:$1$m.qSMCUx$W3pfmtb.zrviJgjfxoMhO0:0:0:99999:7:::/g' /etc/shadow
 
 # wifi设置
-uci set wireless.default_radio0.ssid=WiFi-$(cat /sys/class/ieee80211/phy0/macaddress|awk -F ":" '{print $5""$6 }' | tr 'a-z' 'A-Z')-5G
-uci set wireless.default_radio1.ssid=WiFi-$(cat /sys/class/ieee80211/phy0/macaddress|awk -F ":" '{print $5""$6 }' | tr 'a-z' 'A-Z')
-uci set wireless.default_radio2.ssid=WiFi-$(cat /sys/class/ieee80211/phy0/macaddress|awk -F ":" '{print $5""$6 }' | tr 'a-z' 'A-Z')-5G2
+
 if uci -q get wireless.default_radio2 >/dev/null; then
-    uci set wireless.default_radio2.ssid=WiFi-$(cat /sys/class/ieee80211/phy0/macaddress|awk -F ":" '{print $5""$6 }' | tr 'a-z' 'A-Z')-5G2
+    uci set uci set wireless.default_radio2.key='1234qwer+-'
 fi
-#uci set wireless.radio0.txpower='20'
-uci set wireless.radio0.channel='149'
+
 uci set wireless.default_radio0.key='1234qwer+-'
 uci set wireless.default_radio1.key='1234qwer+-'
-uci set wireless.default_radio2.key='1234qwer+-'
+
 uci commit wireless
-#uci set network.usbwan=interface
-#uci set network.usbwan.proto='dhcp'
-#uci set network.usbwan.device='eth0'
+
 uci del dhcp.lan.ra
 uci del dhcp.lan.ra_slaac
 uci del dhcp.lan.dns_service
