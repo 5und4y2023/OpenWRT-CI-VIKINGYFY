@@ -47,7 +47,6 @@ git clone --depth 1 https://github.com/nikkinikki-org/OpenWrt-momo.git package/O
 git clone --depth 1 https://github.com/nikkinikki-org/OpenWrt-nikki.git package/OpenWrt-nikki
 git clone --depth 1 https://github.com/fw876/helloworld.git package/helloworld-ssr-plus
 
-git clone --depth 1 https://github.com/jerrykuku/luci-theme-argon.git package/luci-theme-argon
 git clone --depth 1 https://github.com/gdy666/luci-app-lucky.git package/lucky
 git clone --depth 1 https://github.com/timsaya/luci-app-bandix.git package/luci-app-bandix
 git clone --depth 1 https://github.com/timsaya/openwrt-bandix.git package/openwrt-bandix
