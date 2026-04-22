@@ -79,8 +79,8 @@ mv $GITHUB_WORKSPACE/patch/banner package/base-files/files/etc/banner
 sed -i "/attendedsysupgrade/d" $(find ./feeds/luci/collections/ -type f -name "Makefile")
 
 # 移除系统下的Plugins
-start_line=$(grep -n '"admin\/system\/plugins":' luci-mod-system.json | cut -d: -f1)
-end_line=$(($(grep -n "luci-mod-system-plugins" luci-mod-system.json | cut -d: -f1) + 2))
+start_line=$(grep -n '"admin\/system\/plugins":' feeds/luci/modules/luci-mod-system/root/usr/share/luci/menu.d/luci-mod-system.json | cut -d: -f1)
+end_line=$(($(grep -n "luci-mod-system-plugins" feeds/luci/modules/luci-mod-system/root/usr/share/luci/menu.d/luci-mod-system.json | cut -d: -f1) + 2))
 sed -i "${start_line},${end_line}d" feeds/luci/modules/luci-mod-system/root/usr/share/luci/menu.d/luci-mod-system.json
 echo "已删除第 ${start_line} 到第 ${end_line} 行"
 
