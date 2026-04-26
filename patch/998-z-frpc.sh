@@ -40,10 +40,10 @@ uci set frpc.common.server_port='40101'
 uci set frpc.common.token='frp2026+-*.'
 uci set frpc.common.tls_enable='false'
 
-uci set frpc.common.admin_addr='127.0.0.1'
-uci set frpc.common.admin_port='19698'
-uci set frpc.common.admin_user='frpc'
-uci set frpc.common.admin_pwd='1234qwer+-'
+#uci set frpc.common.admin_addr='127.0.0.1'
+#uci set frpc.common.admin_port='19698'
+#uci set frpc.common.admin_user='frpc'
+#uci set frpc.common.admin_pwd='1234qwer+-'
 
 uci del frpc.ssh
 uci add frpc conf
@@ -64,14 +64,14 @@ uci set frpc.@conf[-1].local_ip='127.0.0.1'
 uci set frpc.@conf[-1].local_port='9090'
 uci set frpc.@conf[-1].remote_port='0'
 
-uci add frpc conf
-uci set frpc.@conf[-1].name="${FRPNAME}_frpweb"
-uci set frpc.@conf[-1].type='tcp'
-uci set frpc.@conf[-1].use_encryption='true'
-uci set frpc.@conf[-1].use_compression='true'
-uci set frpc.@conf[-1].local_ip='127.0.0.1'
-uci set frpc.@conf[-1].local_port='19698'
-uci set frpc.@conf[-1].remote_port='0'
+#uci add frpc conf
+#uci set frpc.@conf[-1].name="${FRPNAME}_frpweb"
+#uci set frpc.@conf[-1].type='tcp'
+#uci set frpc.@conf[-1].use_encryption='true'
+#uci set frpc.@conf[-1].use_compression='true'
+#uci set frpc.@conf[-1].local_ip='127.0.0.1'
+#uci set frpc.@conf[-1].local_port='19698'
+#uci set frpc.@conf[-1].remote_port='0'
 
 uci commit
 /etc/init.d/frpc restart
