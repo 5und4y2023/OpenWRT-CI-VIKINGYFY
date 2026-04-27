@@ -253,7 +253,7 @@ jobs:
       - name: Release Firmware
         uses: softprops/action-gh-release@master
         with:
-          tag_name: qualcommax-based-on-VIKINGYFY
+          tag_name: qualcommax-based-on-VIKINGYFY-${{env.RELEASE_TAG}}
           files: ./wrt/upload/*.*
           body: |
 
