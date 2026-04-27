@@ -23,8 +23,8 @@ on:
         description: '选择要发布的地方'
         required: true
         options:
-          - 自用
-          - 定制
+          - self
+          - custom
       USB:
         description: '添加USB驱动。'
         default: 'true'
