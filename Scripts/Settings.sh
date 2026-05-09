@@ -14,7 +14,7 @@ if grep -Eq "frpc=y" .config; then
 	mv $GITHUB_WORKSPACE/patch/998-z-frpc.sh package/base-files/files/etc/uci-defaults/998-z-frpc.sh
 fi
 
-mv $GITHUB_WORKSPACE/patch/998-ipq60xx-home2.sh package/base-files/files/etc/uci-defaults/998-ipq.sh
+#mv $GITHUB_WORKSPACE/patch/998-ipq60xx-home2.sh package/base-files/files/etc/uci-defaults/998-ipq.sh
 #mv $GITHUB_WORKSPACE/patch/xy/footer.ut feeds/luci/themes/luci-theme-argon/ucode/template/themes/argon/footer.ut
 #mv $GITHUB_WORKSPACE/patch/xy/footer_login.ut feeds/luci/themes/luci-theme-argon/ucode/template/themes/argon/footer_login.ut
 #mv $GITHUB_WORKSPACE/patch/xy/10_system.js feeds/luci/modules/luci-mod-status/htdocs/luci-static/resources/view/status/include/10_system.js
